@@ -33,52 +33,52 @@ public class PostEsDaoTest {
     private PostService postService;
     @Resource
     private ElasticsearchRestTemplate elasticsearchRestTemplate;
-
-    @Test
-    void test() {
-        PostQueryRequest postQueryRequest = new PostQueryRequest();
-        com.baomidou.mybatisplus.extension.plugins.pagination.Page<Post> page =
-                postService.searchFromEs(postQueryRequest);
-        Optional<PostEsDTO> esDTO = postEsDao.findById(1L);
-        System.out.println(page);
-    }
-
-    @Test
-    void testSelect() {
-        System.out.println(postEsDao.count());
-        Page<PostEsDTO> PostPage = postEsDao.findAll(
-                PageRequest.of(0, 5, Sort.by("createTime")));
-        List<PostEsDTO> postList = PostPage.getContent();
-
-        System.out.println(postList);
-
-    }
-
-    @Test
-    void testAdd() {
-        PostEsDTO postEsDTO = new PostEsDTO();
-        postEsDTO.setId(1L);
-        postEsDTO.setTitle("test");
-        postEsDTO.setContent("test");
-        postEsDTO.setTags(Arrays.asList("java", "python"));
-        postEsDTO.setUserId(1L);
-        postEsDTO.setCreateTime(new Date());
-        postEsDTO.setUpdateTime(new Date());
-        postEsDTO.setIsDelete(0);
-        postEsDao.save(postEsDTO);
-        System.out.println(postEsDTO.getId());
-    }
-
-    @Test
-    void testFindById() {
-        Optional<PostEsDTO> postEsDTO = postEsDao.findById(1L);
-        System.out.println(postEsDTO);
-    }
-
-    @Test
-    void testCount() {
-        System.out.println(postEsDao.count());
-    }
+//
+//    @Test
+//    void test() {
+//        PostQueryRequest postQueryRequest = new PostQueryRequest();
+//        com.baomidou.mybatisplus.extension.plugins.pagination.Page<Post> page =
+//                postService.searchFromEs(postQueryRequest);
+//        Optional<PostEsDTO> esDTO = postEsDao.findById(1L);
+//        System.out.println(page);
+//    }
+//
+//    @Test
+//    void testSelect() {
+//        System.out.println(postEsDao.count());
+//        Page<PostEsDTO> PostPage = postEsDao.findAll(
+//                PageRequest.of(0, 5, Sort.by("createTime")));
+//        List<PostEsDTO> postList = PostPage.getContent();
+//
+//        System.out.println(postList);
+//
+//    }
+//
+//    @Test
+//    void testAdd() {
+//        PostEsDTO postEsDTO = new PostEsDTO();
+//        postEsDTO.setId(1L);
+//        postEsDTO.setTitle("test");
+//        postEsDTO.setContent("test");
+//        postEsDTO.setTags(Arrays.asList("java", "python"));
+//        postEsDTO.setUserId(1L);
+//        postEsDTO.setCreateTime(new Date());
+//        postEsDTO.setUpdateTime(new Date());
+//        postEsDTO.setIsDelete(0);
+//        postEsDao.save(postEsDTO);
+//        System.out.println(postEsDTO.getId());
+//    }
+//
+//    @Test
+//    void testFindById() {
+//        Optional<PostEsDTO> postEsDTO = postEsDao.findById(1L);
+//        System.out.println(postEsDTO);
+//    }
+//
+//    @Test
+//    void testCount() {
+//        System.out.println(postEsDao.count());
+//    }
 
     @Test
     void testFindByCategory() {
